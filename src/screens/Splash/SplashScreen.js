@@ -4,6 +4,7 @@ import LinearGradient from "react-native-linear-gradient";
 import { CircleSnail } from "react-native-progress";
 
 import styles from "./styles";
+import { withNavigation } from "react-navigation";
 // import console = require("console");
 
 const visitSumenep = require("../../../assets/img/visit-sumenep.png");
@@ -11,10 +12,10 @@ const width = Dimensions.get("window").width;
 
 class SplashScreen extends Component {
     static navigationOptions = ({ navigation }) => {
-        const { navigate } = navigation;
-        setTimeout(function () {
-            navigate("VrExample");
-        }, 3000);
+        // const { navigate } = navigation;
+        // setTimeout(function () {
+        //     navigate("VrExample");
+        // }, 3000);
         return {
             title: "Splash Screen",
             headerStyle: {
@@ -29,9 +30,12 @@ class SplashScreen extends Component {
         };
     }
 
-    // componentDidMount() {
-
-    // }
+    componentDidMount() {
+        const { replace } = this.props.navigation;
+        setTimeout(function () {
+            replace("VrExample");
+        }, 3000);
+    }
 
     render() {
         return (
@@ -52,4 +56,4 @@ class SplashScreen extends Component {
     }
 }
 
-export default SplashScreen;
+export default withNavigation(SplashScreen);
